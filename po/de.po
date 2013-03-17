@@ -1,0 +1,368 @@
+# cournol - German translation file
+# Copyright (C) 2007 Fabian Foerg
+# This file is distributed under the same license as the angebotsmonopoly package.
+# fabian.foerg <fabian.foerg@gmx.de>, 2007.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: cournol 0.5\n"
+"Report-Msgid-Bugs-To: fabian.foerg@gmx.de\n"
+"POT-Creation-Date: 2008-03-15 21:54+0100\n"
+"PO-Revision-Date: 2007-06-07 19:55+0200\n"
+"Last-Translator: Fabian Förg <fabian.foerg@gmx.de>\n"
+"Language-Team: Fabian Förg <fabian.foerg@gmx.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/create_table.c:51 src/create_table.c:172 src/create_table.c:351
+#: src/create_table.c:588 src/create_table.c:738 src/create_table.c:892
+msgid "Cost functions"
+msgstr "Kostenfunktionen"
+
+#: src/create_table.c:56 src/create_table.c:593
+#, c-format
+msgid "<span color=\"#15a40a\">C(x) = %gx %+g</span>"
+msgstr "<span color=\"#15a40a\">K(x) = %gx %+g</span>"
+
+#: src/create_table.c:65 src/create_table.c:602
+#, c-format
+msgid "<span color=\"#15a40a\">C'(x) = %g</span>"
+msgstr "<span color=\"#15a40a\">K'(x) = %g</span>"
+
+#: src/create_table.c:73
+#, c-format
+msgid "c(x) = %g %+g/x"
+msgstr "k(x) = %g %+g/x"
+
+#: src/create_table.c:79
+#, c-format
+msgid "Cv(x) = %gx"
+msgstr "Kv(x) = %gx"
+
+#: src/create_table.c:86
+#, c-format
+msgid "<span color=\"#e71234\">cv(x) = %g</span>"
+msgstr "<span color=\"#e71234\">kv(x) = %g</span>"
+
+#: src/create_table.c:94 src/create_table.c:221 src/create_table.c:403
+msgid "Revenue function"
+msgstr "Erlösfunktion"
+
+#: src/create_table.c:99 src/create_table.c:226 src/create_table.c:408
+#, c-format
+msgid "<span color=\"#2304ee\">R(x) = %gx</span>"
+msgstr "<span color=\"#2304ee\">E(x) = %gx</span>"
+
+#: src/create_table.c:109 src/create_table.c:236 src/create_table.c:418
+#, c-format
+msgid "<span color=\"#2304ee\">Market price, R'(x) = %g</span>"
+msgstr "<span color=\"#2304ee\">Marktpreis, E'(x) = %g</span>"
+
+#: src/create_table.c:117 src/create_table.c:244 src/create_table.c:426
+#: src/create_table.c:646 src/create_table.c:798 src/create_table.c:952
+msgid "Maximum profit"
+msgstr "Gewinnmaximum:"
+
+#: src/create_table.c:121 src/create_table.c:251 src/create_table.c:316
+#: src/create_table.c:444 src/create_table.c:524 src/create_table.c:553
+#: src/create_table.c:653 src/create_table.c:805 src/create_table.c:966
+#: src/create_table.c:984
+#, c-format
+msgid "Quantity: %g"
+msgstr "Menge: %g"
+
+#: src/create_table.c:123 src/create_table.c:249 src/create_table.c:312
+#: src/create_table.c:446 src/create_table.c:526 src/create_table.c:551
+#: src/create_table.c:657 src/create_table.c:809 src/create_table.c:959
+#: src/create_table.c:970 src/create_table.c:988
+msgid "Quantity: -"
+msgstr "Menge: -"
+
+#: src/create_table.c:132 src/create_table.c:264 src/create_table.c:458
+#: src/create_table.c:679 src/create_table.c:831 src/create_table.c:1012
+#, c-format
+msgid "Amount: %g"
+msgstr "Betrag: %g"
+
+#: src/create_table.c:134 src/create_table.c:258 src/create_table.c:460
+#: src/create_table.c:681 src/create_table.c:833 src/create_table.c:1014
+msgid "Amount: -"
+msgstr "Betrag: -"
+
+#: src/create_table.c:141 src/create_table.c:272 src/create_table.c:467
+#: src/create_table.c:688 src/create_table.c:840 src/create_table.c:1021
+msgid "Profit range"
+msgstr "Gewinnbereich"
+
+#: src/create_table.c:148 src/create_table.c:282 src/create_table.c:288
+#: src/create_table.c:485 src/create_table.c:698 src/create_table.c:703
+#: src/create_table.c:850 src/create_table.c:856 src/create_table.c:1039
+#, c-format
+msgid "Break-even-point: %g"
+msgstr "Break-even-point: %g"
+
+#: src/create_table.c:150 src/create_table.c:277 src/create_table.c:487
+#: src/create_table.c:693 src/create_table.c:845 src/create_table.c:1041
+msgid "Break-even-point: -"
+msgstr "Break-even-point: -"
+
+#: src/create_table.c:178 src/create_table.c:744
+#, c-format
+msgid "<span color=\"#15a40a\">C(x) = %gx² %+gx %+g</span>"
+msgstr "<span color=\"#15a40a\">K(x) = %gx² %+gx %+g</span>"
+
+#: src/create_table.c:188 src/create_table.c:754
+#, c-format
+msgid "<span color=\"#15a40a\">C'(x) = %gx %+g</span>"
+msgstr "<span color=\"#15a40a\">K'(x) = %gx %+g</span>"
+
+#: src/create_table.c:197
+#, c-format
+msgid "c(x) = %gx %+g %+g/x"
+msgstr "k(x) = %gx %+g %+g/x"
+
+#: src/create_table.c:205
+#, c-format
+msgid "Cv(x) = %gx² %+gx %+g"
+msgstr "Kv(x) = %gx² %+gx %+g"
+
+#: src/create_table.c:213
+#, c-format
+msgid "<span color=\"#e71234\">cv(x) = %gx %+g</span>"
+msgstr "<span color=\"#e71234\">kv(x) = %gx %+g</span>"
+
+#: src/create_table.c:299 src/create_table.c:501 src/create_table.c:714
+#: src/create_table.c:868 src/create_table.c:1054
+#, c-format
+msgid "End: %g"
+msgstr "Grenze: %g"
+
+#: src/create_table.c:301 src/create_table.c:503 src/create_table.c:716
+#: src/create_table.c:870 src/create_table.c:1056
+msgid "End: -"
+msgstr "Grenze: -"
+
+#: src/create_table.c:308 src/create_table.c:510
+msgid "Cost optimum"
+msgstr "Betriebsoptimum"
+
+#: src/create_table.c:324 src/create_table.c:539 src/create_table.c:560
+#: src/create_table.c:668 src/create_table.c:820 src/create_table.c:1000
+msgid "Price: -"
+msgstr "Preis: -"
+
+#: src/create_table.c:328 src/create_table.c:537 src/create_table.c:565
+#: src/create_table.c:666 src/create_table.c:818 src/create_table.c:998
+#, c-format
+msgid "Price: %g"
+msgstr "Preis: %g"
+
+#: src/create_table.c:357 src/create_table.c:898
+#, c-format
+msgid "<span color=\"#15a40a\">C(x) = %gx³ %+gx² %+gx %+g</span>"
+msgstr "<span color=\"#15a40a\">K(x) = %gx³ %+gx² %+gx %+g</span>"
+
+#: src/create_table.c:367 src/create_table.c:908
+#, c-format
+msgid "<span color=\"#15a40a\">C'(x) = %gx² %+gx %+g</span>"
+msgstr "<span color=\"#15a40a\">K'(x) = %gx² %+gx %+g</span>"
+
+#: src/create_table.c:377
+#, c-format
+msgid "c(x) = %gx² %+gx %+g %+g/x"
+msgstr "k(x) = %gx² %+gx %+g %+g/x"
+
+#: src/create_table.c:386
+#, c-format
+msgid "Cv(x) = %gx³ %+gx² %+gx"
+msgstr "Kv(x) = %gx³ %+gx² %+gx"
+
+#: src/create_table.c:395
+#, c-format
+msgid "<span color=\"#e71234\">cv(x) = %gx² %+gx %+g</span>"
+msgstr "<span color=\"#e71234\">kv(x) = %gx² %+gx %+g</span>"
+
+#: src/create_table.c:546
+msgid "Cost minimum"
+msgstr "Betriebsminimum"
+
+#: src/create_table.c:610 src/create_table.c:762 src/create_table.c:916
+msgid "Price-sales-function"
+msgstr "Preis-Absatz-Funktion"
+
+#: src/create_table.c:614 src/create_table.c:766 src/create_table.c:920
+#, c-format
+msgid "<span color=\"#e71234\">p(x) = %gx %+g</span>"
+msgstr "<span color=\"#e71234\">p(x) = %gx %+g</span>"
+
+#: src/create_table.c:622 src/create_table.c:774 src/create_table.c:928
+msgid "Revenue functions"
+msgstr "Erlösfunktionen"
+
+#: src/create_table.c:628 src/create_table.c:780 src/create_table.c:934
+#, c-format
+msgid "<span color=\"#2304ee\">R(x) = %gx² %+gx</span>"
+msgstr "<span color=\"#2304ee\">E(x) = %gx² %+gx</span>"
+
+#: src/create_table.c:638 src/create_table.c:790 src/create_table.c:944
+#, c-format
+msgid "<span color=\"#2304ee\">R'(x) = %gx %+g</span>"
+msgstr "<span color=\"#2304ee\">E'(x) = %gx %+g</span>"
+
+#: src/input.c:55
+msgid "<b>Cost function 'C(x) = ax + b'</b>"
+msgstr "<b>Kostenfunktion 'K(x) = ax + b'</b>"
+
+#: src/input.c:96
+msgid "<b>Cost function 'C(x) = ax² + bx + c'</b>"
+msgstr "<b>Kostenfunktion 'K(x) = ax² + bx + c'</b>"
+
+#: src/input.c:149
+msgid "<b>Cost function 'C(x) = ax³ + bx² + cx + d'</b>"
+msgstr "<b>Kostenfunktion 'K(x) = ax³ + bx² + cx + d'</b>"
+
+#: src/input.c:206
+msgid "Input - "
+msgstr "Eingabe - "
+
+#: src/input.c:280
+msgid "Market price:"
+msgstr "Marktpreis:"
+
+#: src/input.c:292
+msgid "Maximum capacity:"
+msgstr "Kapazitätsgrenze:"
+
+#: src/input.c:320
+msgid "<b>Price-sales-function 'p(x) = ex + f'</b>"
+msgstr "<b>Preis-Absatz-Funktion 'p(x) = ex + f'</b>"
+
+#: src/message.c:40
+msgid "Message - "
+msgstr "Nachricht - "
+
+#: src/options.c:44
+msgid "Options - "
+msgstr "Wahl - "
+
+#: src/options.c:55
+msgid "<b>Analysis of an absolute supply monopoly or a polypoly.</b>"
+msgstr ""
+"<b>Analyse eines vollkommenen Angebotsmonopols oder eines Polypols.</b>"
+
+#: src/options.c:59
+msgid "Choose the market type:"
+msgstr "Wählen Sie die Marktsituation:"
+
+#: src/options.c:64
+msgid "Polypoly"
+msgstr "Polypol"
+
+#: src/options.c:71
+msgid "Monopoly"
+msgstr "Monopol"
+
+#: src/options.c:74
+msgid "Choose the cost function type:"
+msgstr "Wählen Sie den Kostenfunktionstypen"
+
+#: src/options.c:79
+msgid "Linear cost function"
+msgstr "Lineare Kostenfunktion"
+
+#: src/options.c:87
+msgid "Quadratic cost function"
+msgstr "Quadratische Kostenfunktion"
+
+#: src/options.c:95
+msgid "Sigmoid cost function"
+msgstr "S-förmige Kostenfunktion"
+
+#: src/output.c:103
+msgid "<b>Absolute observation</b>"
+msgstr "<b>Gesamtbetrachtung</b>"
+
+#: src/output.c:107
+msgid "<b>Marginal observation</b>"
+msgstr "<b>Grenzbetrachtung</b>"
+
+#: src/output.c:151
+msgid "C(x)"
+msgstr "K(x)"
+
+#: src/output.c:166
+msgid "C'(x)"
+msgstr "K'(x)"
+
+#: src/output.c:190
+msgid "c(x)"
+msgstr "k(x)"
+
+#: src/output.c:210
+msgid "cv(x)"
+msgstr "kv(x)"
+
+#: src/output.c:236
+msgid "p(x)"
+msgstr "p(x)"
+
+#: src/output.c:262 src/output.c:272
+msgid "R(x)"
+msgstr "E(x)"
+
+#: src/output.c:292 src/output.c:301
+msgid "R'(x)"
+msgstr "E'(x)"
+
+#: src/output.c:319
+msgid "Cournot point"
+msgstr "Cournotscher Punkt"
+
+#: src/output.c:338
+msgid "Output - "
+msgstr "Ausgabe - "
+
+#: src/output.c:352
+msgid "Current x"
+msgstr "Aktuelles x"
+
+#: src/output.c:353
+msgid "Current y"
+msgstr "Aktuelles y"
+
+#: src/output.c:453
+msgid ""
+"Select an area on the drawing area and left-click on it\n"
+"in order to zoom in."
+msgstr ""
+"Wählen Sie einen Bereich auf der Zeichenfläche aus und klicken Sie mit der "
+"linken Maustaste darauf,\n"
+"um den Bereich vergrößert darzustellen."
+
+#: src/output.c:459
+msgid ""
+"Right-click on the drawing area\n"
+"in order to zoom out."
+msgstr ""
+"Klicken Sie mit der rechten Maustaste auf die Zeichenfläche,\n"
+"um wegzuzoomen."
+
+#: src/output.c:467
+#, c-format
+msgid ""
+"<b>%s %s</b>\n"
+"\n"
+"This program is released under the GPL.\n"
+"Home page: http://cournol.k-2007.de/\n"
+"Copyright (C) (2007) (Fabian Förg) &lt;fabian.foerg@gmx.de&gt;"
+msgstr ""
+"<b>%s %s</b>\n"
+"\n"
+"Dieses Programm wird unter der GPL veröffentlicht.\n"
+"Homepage: http://cournol.k-2007.de/\n"
+"Copyright (C) (2007) (Fabian Förg) &lt;fabian.foerg@gmx.de&gt;"
+
+#: src/output.c:564
+msgid "Print Window - "
+msgstr "Druckfenster - "

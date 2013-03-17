@@ -1,0 +1,29 @@
+Cournol is a GTK+ based application for analyzing absolute supply
+monopolies and polypolies. The program calculates the most important
+information of such market types (e. g. maximum profit) and draws the
+respective graphs.
+
+Cournol depends on GTK+ >= 2.10.0, so you have to install the
+appropriate development packages.
+
+Cournol also depends on the GtkDatabox library by Dr. Roland Bock (see
+http://www.eudoxos.de/gtk/gtkdatabox/).
+
+The name of the program is derived from the French economist, philosopher and
+mathematician "Antoine Augustin Cournot", and the suffix "-ol" of the German
+words "Monopol" (English: monopoly), as well as "Polypol" (English: polypoly).
+
+The icon of cournol shows Cournot's face. 
+
+The file scripts/Lindent is a shell script which was taken from the Linux
+kernel 2.6.15 archive (see http://www.kernel.org/). The scripts uses the GNU
+tool indent for formatting the source code.
+
+An Inno Setup script is located in scripts/cournol.iss
+
+Get the newest version of cournol from: http://cournol.k-2007.de/
+
+Read INSTALL for detailed installation instructions.
+
+Cournol is released under the GPL.
+

@@ -1,0 +1,22 @@
+2008-03-15 (0.5)
+- removed gtkdatabox from cournol
+- cleaned up the code
+
+2007-08-18 (0.4)
+- added an Inno Setup script
+- cleaned up the code
+
+2007-05-31 (0.3.1.1)
+- updated README
+- added a man page
+
+2007-05-30 (0.3.1)
+- updated German translation
+
+2007-05-28 (0.3)
+- added polypoly support
+- changed structure of the whole code
+
+2007-04-24 (0.2)
+- improved printing support
+- upgraded to gtkdatabox-0.7.0.1

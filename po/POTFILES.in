@@ -1,0 +1,7 @@
+# List of source files which contain translatable strings.
+
+src/create_table.c
+src/input.c
+src/message.c
+src/options.c
+src/output.c
