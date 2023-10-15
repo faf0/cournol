@@ -1,0 +1,233 @@
+--- gtkdatabox-0.7.0.0/gtk/gtkdatabox.c	2006-08-08 06:16:48.000000000 +0200
++++ cournol-0.1/lib/nxpgtkdatabox/nxpgtkdatabox.c	2007-01-18 16:34:50.000000000 +0100
+@@ -16,8 +16,13 @@
+  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+  */
+ 
++/*
++ * Modified by Fabian Foerg <fabian.foerg@gmx.de>
++ * Original file: gtkdatabox.c, version 0.7.0.0
++ */
++
+ #include <gtk/gtktable.h>
+-#include <gtkdatabox.h>
++#include <nxpgtkdatabox.h>
+ #include <gtkdatabox_marshal.h>
+ #include <gtk/gtkgc.h>
+ 
+@@ -84,8 +89,8 @@
+    gboolean enable_zoom;
+    GtkAdjustment *adjX;
+    GtkAdjustment *adjY;
+-   GtkRuler *rulerX;
+-   GtkRuler *rulerY;
++   NxpRuler *rulerX;
++   NxpRuler *rulerY;
+ 
+    /* Other private stuff */
+    GList *graphs;
+@@ -214,7 +219,7 @@
+ }
+ 
+ void
+-gtk_databox_set_hruler (GtkDatabox *box, GtkRuler *ruler)
++gtk_databox_set_hruler (GtkDatabox *box, NxpRuler *ruler)
+ {
+    g_return_if_fail (GTK_IS_DATABOX (box));
+ 
+@@ -223,11 +228,10 @@
+       /* @@@ Do we need to disconnect the signals here? */
+    }
+ 
+-   if (GTK_IS_RULER (ruler))
++   if (NXP_IS_RULER (ruler))
+    {
+       box->priv->rulerX = ruler;
+    
+-      gtk_ruler_set_metric (GTK_RULER (box->priv->rulerX), GTK_PIXELS);
+       gtk_databox_hruler_update (box);
+       g_signal_connect_swapped (box, "motion_notify_event",
+             G_CALLBACK (GTK_WIDGET_GET_CLASS (box->priv->rulerX)->motion_notify_event),
+@@ -239,7 +243,7 @@
+    }
+    else
+    {
+-      g_warning ("ruler is neither a GtkRuler nor NULL!");
++      g_warning ("ruler is neither a NxpRuler nor NULL!");
+       box->priv->rulerX = NULL;
+    }
+    
+@@ -247,7 +251,7 @@
+ }
+ 
+ void
+-gtk_databox_set_vruler (GtkDatabox *box, GtkRuler *ruler)
++gtk_databox_set_vruler (GtkDatabox *box, NxpRuler *ruler)
+ {
+    g_return_if_fail (GTK_IS_DATABOX (box));
+ 
+@@ -256,11 +260,10 @@
+       /* @@@ Do we need to disconnect the signals here? */
+    }
+ 
+-   if (GTK_IS_RULER (ruler))
++   if (NXP_IS_RULER (ruler))
+    {
+       box->priv->rulerY = ruler;
+    
+-      gtk_ruler_set_metric (GTK_RULER (box->priv->rulerY), GTK_PIXELS);
+       gtk_databox_vruler_update (box);
+       g_signal_connect_swapped (box, "motion_notify_event",
+             G_CALLBACK (GTK_WIDGET_GET_CLASS (box->priv->rulerY)->motion_notify_event),
+@@ -272,7 +275,7 @@
+    }
+    else
+    {
+-      g_warning ("ruler is neither a GtkRuler nor NULL!");
++      g_warning ("ruler is neither a NxpRuler nor NULL!");
+       box->priv->rulerY = NULL;
+    }
+    
+@@ -346,7 +349,7 @@
+    return box->priv->adjY;
+ }
+ 
+-GtkRuler *
++NxpRuler *
+ gtk_databox_get_hruler (GtkDatabox *box)
+ {
+    g_return_val_if_fail (GTK_IS_DATABOX (box), NULL);
+@@ -354,7 +357,7 @@
+    return box->priv->rulerX;
+ }
+ 
+-GtkRuler *
++NxpRuler *
+ gtk_databox_get_vruler (GtkDatabox *box)
+ {
+    g_return_val_if_fail (GTK_IS_DATABOX (box), NULL);
+@@ -494,8 +497,8 @@
+ 
+    databox_param_spec = g_param_spec_object ("hruler",
+                                               "Horizontal Ruler",
+-                                              "GtkHRuler, if defined",
+-                                              GTK_TYPE_RULER,  
++                                              "NxpHRuler, if defined",
++                                              NXP_TYPE_RULER,
+                                               G_PARAM_CONSTRUCT
+                                               | G_PARAM_READWRITE);
+ 
+@@ -505,8 +508,8 @@
+ 
+    databox_param_spec = g_param_spec_object ("vruler",
+                                               "Vertical Ruler",
+-                                              "GtkVRuler, if defined",
+-                                              GTK_TYPE_RULER,
++                                              "NxpVRuler, if defined",
++                                              NXP_TYPE_RULER,
+                                               G_PARAM_CONSTRUCT
+                                               | G_PARAM_READWRITE);
+ 
+@@ -1188,12 +1191,9 @@
+ {
+    if (box->priv->rulerX)
+    {
+-      gtk_ruler_set_range (GTK_RULER (box->priv->rulerX), 
+-                           box->priv->canvas.top_left_visible.x,
+-                           box->priv->canvas.bottom_right_visible.x,
+-                           0.5 * 
+-                           (box->priv->canvas.top_left_visible.x
+-                            + box->priv->canvas.bottom_right_visible.x), 20);
++      nxp_ruler_adjustment_set_range (nxp_ruler_get_adjustment (NXP_RULER (box->priv->rulerX)),
++                                      box->priv->canvas.top_left_visible.x,
++                                      box->priv->canvas.bottom_right_visible.x);
+    }
+ }
+ 
+@@ -1202,12 +1202,9 @@
+ {
+    if (box->priv->rulerY)
+    {
+-      gtk_ruler_set_range (GTK_RULER (box->priv->rulerY), 
+-                           box->priv->canvas.top_left_visible.y,
+-                           box->priv->canvas.bottom_right_visible.y,
+-                           0.5 * 
+-                           (box->priv->canvas.top_left_visible.y
+-                            + box->priv->canvas.bottom_right_visible.y), 20);
++      nxp_ruler_adjustment_set_range (nxp_ruler_get_adjustment (NXP_RULER (box->priv->rulerY)),
++                                      box->priv->canvas.bottom_right_visible.y,
++                                      box->priv->canvas.top_left_visible.y);
+    }
+ }
+ 
+@@ -1458,8 +1455,8 @@
+ 
+ #include <gtk/gtkhscrollbar.h>
+ #include <gtk/gtkvscrollbar.h>
+-#include <gtk/gtkhruler.h>
+-#include <gtk/gtkvruler.h>
++#include <nxphruler.h>
++#include <nxpvruler.h>
+ void
+ gtk_databox_create_box_with_scrollbars_and_rulers (GtkWidget **p_box, 
+                                                    GtkWidget **p_table,
+@@ -1471,7 +1468,9 @@
+    GtkWidget *table;
+    GtkWidget *box;
+    GtkWidget *scrollbar;
++   NxpRulerAdjustment *adj;
+    GtkWidget *ruler;
++   GdkColor color;
+ 
+    *p_table = table = gtk_table_new (3, 3, FALSE);
+    *p_box = box = gtk_databox_new ();
+@@ -1480,12 +1479,16 @@
+                      GTK_FILL | GTK_EXPAND | GTK_SHRINK,
+                      GTK_FILL | GTK_EXPAND | GTK_SHRINK, 0, 0);
+ 
++   color.red = 0;
++   color.green = 0;
++   color.blue = 0;
++
+    if (hscrollbar)
+    {
+       scrollbar = gtk_hscrollbar_new (NULL);
+       gtk_databox_set_hadjustment (GTK_DATABOX (box), 
+                            gtk_range_get_adjustment (GTK_RANGE (scrollbar)));
+-      gtk_table_attach (GTK_TABLE (table), scrollbar, 1, 2, 2, 3,
++      gtk_table_attach (GTK_TABLE (table), scrollbar, 1, 2, 0, 1,
+                         GTK_FILL | GTK_EXPAND | GTK_SHRINK, GTK_FILL, 0, 0);
+    }
+ 
+@@ -1500,17 +1503,26 @@
+ 
+    if (hruler)
+    {
+-      ruler = gtk_hruler_new ();
+-      gtk_table_attach (GTK_TABLE (table), ruler, 1, 2, 0, 1,
++      adj = nxp_ruler_adjustment_new (0.0, 10.0);
++      ruler = nxp_hruler_new (adj);
++      g_object_unref (adj);
++      gtk_table_attach (GTK_TABLE (table), ruler, 1, 2, 2, 3,
+                        GTK_FILL | GTK_EXPAND | GTK_SHRINK, GTK_FILL, 0, 0);
+-      gtk_databox_set_hruler (GTK_DATABOX (box), GTK_RULER (ruler));
++      nxp_hruler_set_facing (NXP_HRULER (ruler), NXP_HRULER_FACING_UP);
++      gtk_widget_set_sensitive (ruler, FALSE);
++      gtk_widget_modify_fg (ruler, GTK_STATE_INSENSITIVE, &color);
++      gtk_databox_set_hruler (GTK_DATABOX (box), NXP_RULER (ruler));
+    }
+ 
+    if (vruler)
+    {
+-      ruler = gtk_vruler_new ();
++      adj = nxp_ruler_adjustment_new (0.0, 10.0);
++      ruler = nxp_vruler_new (adj);
++      g_object_unref (adj);
+       gtk_table_attach (GTK_TABLE (table), ruler, 0, 1, 1, 2,
+                         GTK_FILL, GTK_FILL | GTK_EXPAND | GTK_SHRINK, 0, 0);
+-      gtk_databox_set_vruler (GTK_DATABOX (box), GTK_RULER (ruler));
++      gtk_widget_set_sensitive (ruler, FALSE);
++      gtk_widget_modify_fg (ruler, GTK_STATE_INSENSITIVE, &color);
++      gtk_databox_set_vruler (GTK_DATABOX (box), NXP_RULER (ruler));
+    }
+ }

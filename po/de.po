@@ -5,9 +5,9 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: cournol 0.5\n"
+"Project-Id-Version: cournol 0.4.0\n"
 "Report-Msgid-Bugs-To: fabian.foerg@gmx.de\n"
-"POT-Creation-Date: 2008-03-15 21:54+0100\n"
+"POT-Creation-Date: 2007-08-18 00:24+0200\n"
 "PO-Revision-Date: 2007-06-07 19:55+0200\n"
 "Last-Translator: Fabian Förg <fabian.foerg@gmx.de>\n"
 "Language-Team: Fabian Förg <fabian.foerg@gmx.de>\n"
@@ -57,7 +57,7 @@ msgstr "<span color=\"#2304ee\">E(x) = %gx</span>"
 #: src/create_table.c:109 src/create_table.c:236 src/create_table.c:418
 #, c-format
 msgid "<span color=\"#2304ee\">Market price, R'(x) = %g</span>"
-msgstr "<span color=\"#2304ee\">Marktpreis, E'(x) = %g</span>"
+msgstr "<span color=\"#2304ee\">Market price, E'(x) = %g</span>"
 
 #: src/create_table.c:117 src/create_table.c:244 src/create_table.c:426
 #: src/create_table.c:646 src/create_table.c:798 src/create_table.c:952
@@ -226,15 +226,15 @@ msgstr "<b>Kostenfunktion 'K(x) = ax³ + bx² + cx + d'</b>"
 msgid "Input - "
 msgstr "Eingabe - "
 
-#: src/input.c:280
+#: src/input.c:277
 msgid "Market price:"
 msgstr "Marktpreis:"
 
-#: src/input.c:292
+#: src/input.c:289
 msgid "Maximum capacity:"
 msgstr "Kapazitätsgrenze:"
 
-#: src/input.c:320
+#: src/input.c:317
 msgid "<b>Price-sales-function 'p(x) = ex + f'</b>"
 msgstr "<b>Preis-Absatz-Funktion 'p(x) = ex + f'</b>"
 
@@ -279,59 +279,59 @@ msgstr "Quadratische Kostenfunktion"
 msgid "Sigmoid cost function"
 msgstr "S-förmige Kostenfunktion"
 
-#: src/output.c:103
+#: src/output.c:104
 msgid "<b>Absolute observation</b>"
 msgstr "<b>Gesamtbetrachtung</b>"
 
-#: src/output.c:107
+#: src/output.c:108
 msgid "<b>Marginal observation</b>"
 msgstr "<b>Grenzbetrachtung</b>"
 
-#: src/output.c:151
+#: src/output.c:152
 msgid "C(x)"
 msgstr "K(x)"
 
-#: src/output.c:166
+#: src/output.c:167
 msgid "C'(x)"
 msgstr "K'(x)"
 
-#: src/output.c:190
+#: src/output.c:187
 msgid "c(x)"
 msgstr "k(x)"
 
-#: src/output.c:210
+#: src/output.c:207
 msgid "cv(x)"
 msgstr "kv(x)"
 
-#: src/output.c:236
+#: src/output.c:228
 msgid "p(x)"
 msgstr "p(x)"
 
-#: src/output.c:262 src/output.c:272
+#: src/output.c:250 src/output.c:255
 msgid "R(x)"
 msgstr "E(x)"
 
-#: src/output.c:292 src/output.c:301
+#: src/output.c:270 src/output.c:274
 msgid "R'(x)"
 msgstr "E'(x)"
 
-#: src/output.c:319
+#: src/output.c:290
 msgid "Cournot point"
 msgstr "Cournotscher Punkt"
 
-#: src/output.c:338
+#: src/output.c:310
 msgid "Output - "
 msgstr "Ausgabe - "
 
-#: src/output.c:352
+#: src/output.c:324
 msgid "Current x"
 msgstr "Aktuelles x"
 
-#: src/output.c:353
+#: src/output.c:325
 msgid "Current y"
 msgstr "Aktuelles y"
 
-#: src/output.c:453
+#: src/output.c:428
 msgid ""
 "Select an area on the drawing area and left-click on it\n"
 "in order to zoom in."
@@ -340,7 +340,7 @@ msgstr ""
 "linken Maustaste darauf,\n"
 "um den Bereich vergrößert darzustellen."
 
-#: src/output.c:459
+#: src/output.c:434
 msgid ""
 "Right-click on the drawing area\n"
 "in order to zoom out."
@@ -348,7 +348,7 @@ msgstr ""
 "Klicken Sie mit der rechten Maustaste auf die Zeichenfläche,\n"
 "um wegzuzoomen."
 
-#: src/output.c:467
+#: src/output.c:442
 #, c-format
 msgid ""
 "<b>%s %s</b>\n"
@@ -363,6 +363,6 @@ msgstr ""
 "Homepage: http://cournol.k-2007.de/\n"
 "Copyright (C) (2007) (Fabian Förg) &lt;fabian.foerg@gmx.de&gt;"
 
-#: src/output.c:564
+#: src/output.c:544
 msgid "Print Window - "
 msgstr "Druckfenster - "

@@ -21,9 +21,7 @@
 
 #include "main.h"
 
-/* number of points to draw
- * ASSERT POINTS >= 3 and uneven
- */
+/* number (uneven && >= 3) of points to draw */
 #undef POINTS
 #define POINTS 61
 

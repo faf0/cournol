@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: fabian.foerg@gmx.de\n"
-"POT-Creation-Date: 2008-03-15 21:54+0100\n"
+"POT-Creation-Date: 2007-08-18 00:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -227,15 +227,15 @@ msgstr ""
 msgid "Input - "
 msgstr ""
 
-#: src/input.c:280
+#: src/input.c:277
 msgid "Market price:"
 msgstr ""
 
-#: src/input.c:292
+#: src/input.c:289
 msgid "Maximum capacity:"
 msgstr ""
 
-#: src/input.c:320
+#: src/input.c:317
 msgid "<b>Price-sales-function 'p(x) = ex + f'</b>"
 msgstr ""
 
@@ -279,71 +279,71 @@ msgstr ""
 msgid "Sigmoid cost function"
 msgstr ""
 
-#: src/output.c:103
+#: src/output.c:104
 msgid "<b>Absolute observation</b>"
 msgstr ""
 
-#: src/output.c:107
+#: src/output.c:108
 msgid "<b>Marginal observation</b>"
 msgstr ""
 
-#: src/output.c:151
+#: src/output.c:152
 msgid "C(x)"
 msgstr ""
 
-#: src/output.c:166
+#: src/output.c:167
 msgid "C'(x)"
 msgstr ""
 
-#: src/output.c:190
+#: src/output.c:187
 msgid "c(x)"
 msgstr ""
 
-#: src/output.c:210
+#: src/output.c:207
 msgid "cv(x)"
 msgstr ""
 
-#: src/output.c:236
+#: src/output.c:228
 msgid "p(x)"
 msgstr ""
 
-#: src/output.c:262 src/output.c:272
+#: src/output.c:250 src/output.c:255
 msgid "R(x)"
 msgstr ""
 
-#: src/output.c:292 src/output.c:301
+#: src/output.c:270 src/output.c:274
 msgid "R'(x)"
 msgstr ""
 
-#: src/output.c:319
+#: src/output.c:290
 msgid "Cournot point"
 msgstr ""
 
-#: src/output.c:338
+#: src/output.c:310
 msgid "Output - "
 msgstr ""
 
-#: src/output.c:352
+#: src/output.c:324
 msgid "Current x"
 msgstr ""
 
-#: src/output.c:353
+#: src/output.c:325
 msgid "Current y"
 msgstr ""
 
-#: src/output.c:453
+#: src/output.c:428
 msgid ""
 "Select an area on the drawing area and left-click on it\n"
 "in order to zoom in."
 msgstr ""
 
-#: src/output.c:459
+#: src/output.c:434
 msgid ""
 "Right-click on the drawing area\n"
 "in order to zoom out."
 msgstr ""
 
-#: src/output.c:467
+#: src/output.c:442
 #, c-format
 msgid ""
 "<b>%s %s</b>\n"
@@ -353,6 +353,6 @@ msgid ""
 "Copyright (C) (2007) (Fabian Förg) &lt;fabian.foerg@gmx.de&gt;"
 msgstr ""
 
-#: src/output.c:564
+#: src/output.c:544
 msgid "Print Window - "
 msgstr ""

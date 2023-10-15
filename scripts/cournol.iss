@@ -3,13 +3,13 @@
 
 [Setup]
 AppName=cournol
-AppVerName=cournol 0.5
+AppVerName=cournol 0.4
 AppPublisher=Fabian Foerg
 DefaultDirName={pf}\cournol
 DefaultGroupName=cournol
 AllowNoIcons=yes
 LicenseFile=C:\cournol\COPYING
-OutputBaseFilename=cournol-0.5-setup
+OutputBaseFilename=cournol-0.4-setup
 SetupIconFile=C:\cournol\cournol.ico
 Compression=lzma
 SolidCompression=yes

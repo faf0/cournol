@@ -64,15 +64,15 @@ void input_1(appl_t * appl)
 
 	/* spin button a */
 	adj = (GtkAdjustment *) gtk_adjustment_new(val->a, 0.01, G_MAXFLOAT,
-						   1.0, 10.0, 0.0);
-	sbutton->a = gtk_spin_button_new(adj, 0.0, 2);
+						   1., 10., 0.);
+	sbutton->a = gtk_spin_button_new(adj, 0., 2);
 	gtk_spin_button_set_numeric(GTK_SPIN_BUTTON(sbutton->a), TRUE);
 	gtk_table_attach_defaults(GTK_TABLE(table), sbutton->a, 0, 1, 2, 3);
 
 	/* spin button b */
-	adj = (GtkAdjustment *) gtk_adjustment_new(val->b, 0.0, G_MAXFLOAT,
-						   1.0, 10.0, 0.0);
-	sbutton->b = gtk_spin_button_new(adj, 0.0, 2);
+	adj = (GtkAdjustment *) gtk_adjustment_new(val->b, 0., G_MAXFLOAT,
+						   1., 10., 0.);
+	sbutton->b = gtk_spin_button_new(adj, 0., 2);
 	gtk_spin_button_set_numeric(GTK_SPIN_BUTTON(sbutton->b), TRUE);
 	gtk_table_attach_defaults(GTK_TABLE(table), sbutton->b, 1, 2, 2, 3);
 
@@ -108,24 +108,24 @@ void input_2(appl_t * appl)
 
 	/* spin button a */
 	adj = (GtkAdjustment *) gtk_adjustment_new(val->a, 0.01, G_MAXFLOAT,
-						   1.0, 10.0, 0.0);
-	sbutton->a = gtk_spin_button_new(adj, 0.0, 2);
+						   1., 10., 0.);
+	sbutton->a = gtk_spin_button_new(adj, 0., 2);
 	gtk_spin_button_set_numeric(GTK_SPIN_BUTTON(sbutton->a), TRUE);
 	gtk_table_attach_defaults(GTK_TABLE(table), sbutton->a, 0, 1, 2, 3);
 
 	/* spin button b */
 	adj =
 	    (GtkAdjustment *) gtk_adjustment_new(val->b, -G_MAXFLOAT,
-						 G_MAXFLOAT, 1.0, 10.0, 0.0);
-	sbutton->b = gtk_spin_button_new(adj, 0.0, 2);
+						 G_MAXFLOAT, 1., 10., 0.);
+	sbutton->b = gtk_spin_button_new(adj, 0., 2);
 	gtk_spin_button_set_numeric(GTK_SPIN_BUTTON(sbutton->b), TRUE);
 	gtk_table_attach_defaults(GTK_TABLE(table), sbutton->b, 1, 2, 2, 3);
 
 	/* spin button c */
 	adj =
-	    (GtkAdjustment *) gtk_adjustment_new(val->c, 0.0, G_MAXFLOAT,
-						 1.0, 10.0, 0.0);
-	sbutton->c = gtk_spin_button_new(adj, 0.0, 2);
+	    (GtkAdjustment *) gtk_adjustment_new(val->c, 0., G_MAXFLOAT,
+						 1., 10., 0.);
+	sbutton->c = gtk_spin_button_new(adj, 0., 2);
 	gtk_spin_button_set_numeric(GTK_SPIN_BUTTON(sbutton->c), TRUE);
 	gtk_table_attach_defaults(GTK_TABLE(table), sbutton->c, 2, 3, 2, 3);
 
@@ -164,29 +164,29 @@ void input_3(appl_t * appl)
 
 	/* spin button a */
 	adj = (GtkAdjustment *) gtk_adjustment_new(val->a, 0.01, G_MAXFLOAT,
-						   1.0, 10.0, 0.0);
-	sbutton->a = gtk_spin_button_new(adj, 0.0, 2);
+						   1., 10., 0.);
+	sbutton->a = gtk_spin_button_new(adj, 0., 2);
 	gtk_spin_button_set_numeric(GTK_SPIN_BUTTON(sbutton->a), TRUE);
 	gtk_table_attach_defaults(GTK_TABLE(table), sbutton->a, 0, 1, 2, 3);
 
 	/* spin button b */
 	adj = (GtkAdjustment *) gtk_adjustment_new(val->b, -G_MAXFLOAT,
-						   G_MAXFLOAT, 1.0, 10.0, 0.0);
-	sbutton->b = gtk_spin_button_new(adj, 0.0, 2);
+						   G_MAXFLOAT, 1., 10., 0.);
+	sbutton->b = gtk_spin_button_new(adj, 0., 2);
 	gtk_spin_button_set_numeric(GTK_SPIN_BUTTON(sbutton->b), TRUE);
 	gtk_table_attach_defaults(GTK_TABLE(table), sbutton->b, 1, 2, 2, 3);
 
 	/* spin button c */
 	adj = (GtkAdjustment *) gtk_adjustment_new(val->c, -G_MAXFLOAT,
-						   G_MAXFLOAT, 1.0, 10.0, 0.0);
-	sbutton->c = gtk_spin_button_new(adj, 0.0, 2);
+						   G_MAXFLOAT, 1., 10., 0.);
+	sbutton->c = gtk_spin_button_new(adj, 0., 2);
 	gtk_spin_button_set_numeric(GTK_SPIN_BUTTON(sbutton->c), TRUE);
 	gtk_table_attach_defaults(GTK_TABLE(table), sbutton->c, 2, 3, 2, 3);
 
 	/* spin button d */
-	adj = (GtkAdjustment *) gtk_adjustment_new(val->d, 0.0, G_MAXFLOAT,
-						   1.0, 10.0, 0.0);
-	sbutton->d = gtk_spin_button_new(adj, 0.0, 2);
+	adj = (GtkAdjustment *) gtk_adjustment_new(val->d, 0., G_MAXFLOAT,
+						   1., 10., 0.);
+	sbutton->d = gtk_spin_button_new(adj, 0., 2);
 	gtk_spin_button_set_numeric(GTK_SPIN_BUTTON(sbutton->d), TRUE);
 	gtk_table_attach_defaults(GTK_TABLE(table), sbutton->d, 3, 4, 2, 3);
 
@@ -244,11 +244,8 @@ static void input(GtkWidget * table_cost, appl_t * appl)
 	case 5:
 		callback = G_CALLBACK(get_values_2);
 		break;
-	case 3:
-	case 6:
 	default:
 		callback = G_CALLBACK(get_values_3);
-		break;
 	}
 
 	/* create go forward button, call appropriate get_values function */
@@ -282,8 +279,8 @@ static GtkWidget *init_table_price(appl_t * appl)
 
 	/* spin button e = market price */
 	adj = (GtkAdjustment *) gtk_adjustment_new(val->e, 0.01, G_MAXFLOAT,
-						   1.0, 10.0, 0.0);
-	sbutton->e = gtk_spin_button_new(adj, 0.0, 2);
+						   1., 10., 0.);
+	sbutton->e = gtk_spin_button_new(adj, 0., 2);
 	gtk_spin_button_set_numeric(GTK_SPIN_BUTTON(sbutton->e), TRUE);
 	gtk_table_attach_defaults(GTK_TABLE(table_price), sbutton->e,
 				  0, 1, 1, 2);
@@ -293,9 +290,9 @@ static GtkWidget *init_table_price(appl_t * appl)
 	gtk_table_attach_defaults(GTK_TABLE(table_price), label, 1, 2, 0, 1);
 
 	/* spin button f = maximum capacity */
-	adj = (GtkAdjustment *) gtk_adjustment_new(val->f, 1.0, G_MAXFLOAT,
-						   1.0, 10.0, 0.0);
-	sbutton->f = gtk_spin_button_new(adj, 0.0, 0);
+	adj = (GtkAdjustment *) gtk_adjustment_new(val->f, 1., G_MAXFLOAT,
+						   1., 10., 0.);
+	sbutton->f = gtk_spin_button_new(adj, 0., 0);
 	gtk_spin_button_set_numeric(GTK_SPIN_BUTTON(sbutton->f), TRUE);
 	gtk_table_attach_defaults(GTK_TABLE(table_price), sbutton->f,
 				  1, 2, 1, 2);
@@ -332,16 +329,16 @@ static GtkWidget *init_table_price_sales(appl_t * appl)
 
 	/* spin button e */
 	adj = (GtkAdjustment *) gtk_adjustment_new(val->e, -G_MAXFLOAT, -0.01,
-						   1.0, 10.0, 0.0);
-	sbutton->e = gtk_spin_button_new(adj, 0.0, 2);
+						   1., 10., 0.);
+	sbutton->e = gtk_spin_button_new(adj, 0., 2);
 	gtk_spin_button_set_numeric(GTK_SPIN_BUTTON(sbutton->e), TRUE);
 	gtk_table_attach_defaults(GTK_TABLE(table_price_sales), sbutton->e,
 				  0, 1, 2, 3);
 
 	/* spin button f */
 	adj = (GtkAdjustment *) gtk_adjustment_new(val->f, 0.01, G_MAXFLOAT,
-						   1.0, 10.0, 0.0);
-	sbutton->f = gtk_spin_button_new(adj, 0.0, 2);
+						   1., 10., 0.);
+	sbutton->f = gtk_spin_button_new(adj, 0., 2);
 	gtk_spin_button_set_numeric(GTK_SPIN_BUTTON(sbutton->f), TRUE);
 	gtk_table_attach_defaults(GTK_TABLE(table_price_sales), sbutton->f,
 				  1, 2, 2, 3);

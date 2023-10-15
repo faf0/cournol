@@ -2,4 +2,5 @@
 #define GETTEXT_PACKAGE "cournol"
 #define LOCALEDIR "./share/locale"
 #define PACKAGE "cournol"
-#define VERSION "0.5"
+#define VERSION "0.4"
+

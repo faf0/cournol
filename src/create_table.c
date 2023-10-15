@@ -245,7 +245,7 @@ GtkWidget *create_table_poly_2(appl_t * appl)
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 4, 5);
 
 	val->quantity = (val->e - val->b) / (2. * val->a);
-	if (val->quantity < 0.0)
+	if (val->quantity < 0.)
 		text = g_strdup_printf(_("Quantity: -"));
 	else
 		text = g_strdup_printf(_("Quantity: %g"), val->quantity);
@@ -254,7 +254,7 @@ GtkWidget *create_table_poly_2(appl_t * appl)
 	g_free(text);
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 1, 2, 4, 5);
 
-	if (val->quantity < 0.0)
+	if (val->quantity < 0.)
 		text = g_strdup_printf(_("Amount: -"));
 	else {
 		val->price =
@@ -273,9 +273,9 @@ GtkWidget *create_table_poly_2(appl_t * appl)
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 5, 6);
 
 	discr = SQR(val->b - val->e) - 4. * val->a * val->c;
-	if (discr < 0.0) {
+	if (discr < 0.) {
 		text = g_strdup_printf(_("Break-even-point: -"));
-	} else if (discr == 0.0) {
+	} else if (discr == 0.) {
 		val->quantity = (-val->b + val->e) / (2. * val->a);
 
 		text =
@@ -292,7 +292,7 @@ GtkWidget *create_table_poly_2(appl_t * appl)
 	g_free(text);
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 1, 2, 5, 6);
 
-	if (discr > 0.0) {
+	if (discr > 0.) {
 		val->quantity =
 		    (-val->b + val->e + sqrt(discr)) / (2. * val->a);
 
@@ -308,7 +308,7 @@ GtkWidget *create_table_poly_2(appl_t * appl)
 	label = gtk_label_new(_("Cost optimum"));
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 6, 7);
 
-	if (val->c < 0.0)
+	if (val->c < 0.)
 		text = g_strdup_printf(_("Quantity: -"));
 	else {
 		val->quantity = sqrt(val->c / val->a);
@@ -320,7 +320,7 @@ GtkWidget *create_table_poly_2(appl_t * appl)
 	g_free(text);
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 1, 2, 6, 7);
 
-	if (val->c < 0.0)
+	if (val->c < 0.)
 		text = g_strdup_printf(_("Price: -"));
 	else {
 		val->price = 2. * sqrt(val->a * val->c) + val->b;
@@ -427,9 +427,9 @@ GtkWidget *create_table_poly_3(appl_t * appl)
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 4, 5);
 
 	discr = 4. * SQR(val->b) + 12. * val->a * (val->e - val->c);
-	if (discr < 0.0)
+	if (discr < 0.)
 		val->quantity = -1.;
-	else if (discr == 0.0)
+	else if (discr == 0.)
 		val->quantity = -val->b / (3. * val->a);
 	else {
 		gfloat quantity_2;
@@ -440,7 +440,7 @@ GtkWidget *create_table_poly_3(appl_t * appl)
 		val->quantity = MAX(val->quantity, quantity_2);
 	}
 
-	if (val->quantity >= 0.0)
+	if (val->quantity >= 0.)
 		text = g_strdup_printf(_("Quantity: %g"), val->quantity);
 	else
 		text = g_strdup_printf(_("Quantity: -"));
@@ -449,7 +449,7 @@ GtkWidget *create_table_poly_3(appl_t * appl)
 	g_free(text);
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 1, 2, 4, 5);
 
-	if (val->quantity >= 0.0) {
+	if (val->quantity >= 0.) {
 		val->price =
 		    val->quantity * (-val->quantity *
 				     (val->a * val->quantity + val->b) +
@@ -473,7 +473,7 @@ GtkWidget *create_table_poly_3(appl_t * appl)
 	    (val->b * (val->c - val->e)) / (3. * SQR(val->a)) + val->d / val->a;
 
 	discr = 4. * THR(p) + 27. * SQR(q);
-	if (discr < 0.0) {
+	if (discr < 0.) {
 		gfloat u1;
 
 		u1 = -sqrt(-4. / 3. * p) * cos(1. / 3. *
@@ -490,7 +490,7 @@ GtkWidget *create_table_poly_3(appl_t * appl)
 	g_free(text);
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 1, 2, 5, 6);
 
-	if (discr < 0.0) {
+	if (discr < 0.) {
 		gfloat u2;
 
 		u2 = sqrt(-4. / 3. * p) * cos(1. / 3. *
@@ -514,7 +514,7 @@ GtkWidget *create_table_poly_3(appl_t * appl)
 	q = THR(val->b / val->a) / 108. - val->d / (2. * val->a);
 
 	discr = 4. * THR(p) + 27. * SQR(q);
-	if (discr > 0.0) {
+	if (discr > 0.) {
 		gfloat u, v;
 
 		v = sqrt(SQR(q / 2.) + THR(p / 3.));
@@ -529,7 +529,7 @@ GtkWidget *create_table_poly_3(appl_t * appl)
 	g_free(text);
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 1, 2, 6, 7);
 
-	if (discr > 0.0) {
+	if (discr > 0.) {
 		val->price =
 		    val->quantity * (val->a * val->quantity + val->b) + val->c +
 		    val->d / val->quantity;
@@ -547,7 +547,7 @@ GtkWidget *create_table_poly_3(appl_t * appl)
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 7, 8);
 
 	val->quantity = -val->b / (2. * val->a);
-	if (val->quantity <= 0.0)
+	if (val->quantity <= 0.)
 		text = g_strdup_printf(_("Quantity: -"));
 	else
 		text = g_strdup_printf(_("Quantity: %g"), val->quantity);
@@ -556,7 +556,7 @@ GtkWidget *create_table_poly_3(appl_t * appl)
 	g_free(text);
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 1, 2, 7, 8);
 
-	if (val->quantity <= 0.0)
+	if (val->quantity <= 0.)
 		text = g_strdup_printf(_("Price: -"));
 	else {
 		val->price =
@@ -649,10 +649,10 @@ GtkWidget *create_table_mono_1(appl_t * appl)
 	/* initialize quantity */
 	val->quantity = (val->a - val->f) / (2. * val->e);
 
-	if (val->quantity > 0.0) {
+	if (val->quantity > 0.) {
 		text = g_strdup_printf(_("Quantity: %g"), val->quantity);
 
-		val->cournot_point = TRUE;
+		val->cournot_points = 1;
 	} else
 		text = g_strdup_printf(_("Quantity: -"));
 
@@ -660,7 +660,7 @@ GtkWidget *create_table_mono_1(appl_t * appl)
 	g_free(text);
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 1, 2, 3, 4);
 
-	if (val->cournot_point) {
+	if (val->cournot_points != 0) {
 		val->price = val->e * val->quantity + val->f;
 
 		text = g_strdup_printf(_("Price: %g"), val->price);
@@ -671,7 +671,7 @@ GtkWidget *create_table_mono_1(appl_t * appl)
 	g_free(text);
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 2, 3, 3, 4);
 
-	if (val->cournot_point) {
+	if (val->cournot_points != 0) {
 		amount =
 		    val->quantity * (val->e * val->quantity + val->f - val->a) -
 		    val->b;
@@ -689,9 +689,9 @@ GtkWidget *create_table_mono_1(appl_t * appl)
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 5, 6);
 
 	discr = SQR(val->f - val->a) + 4. * val->e * val->b;
-	if (discr < 0.0)
+	if (discr < 0.)
 		text = g_strdup_printf(_("Break-even-point: -"));
-	else if (discr == 0.0) {
+	else if (discr == 0.) {
 		gfloat prof_beg;
 
 		prof_beg = (-val->f + val->a) / (2. * val->e);
@@ -707,7 +707,7 @@ GtkWidget *create_table_mono_1(appl_t * appl)
 	g_free(text);
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 1, 2, 5, 6);
 
-	if (discr > 0.0) {
+	if (discr > 0.) {
 		gfloat prof_end;
 
 		prof_end = (-val->f + val->a - sqrt(discr)) / (2. * val->e);
@@ -801,10 +801,10 @@ GtkWidget *create_table_mono_2(appl_t * appl)
 	/* initialize quantity */
 	val->quantity = (val->b - val->f) / (2. * (val->e - val->a));
 
-	if (val->quantity > 0.0) {
+	if (val->quantity > 0.) {
 		text = g_strdup_printf(_("Quantity: %g"), val->quantity);
 
-		val->cournot_point = TRUE;
+		val->cournot_points = 1;
 	} else
 		text = g_strdup_printf(_("Quantity: -"));
 
@@ -812,7 +812,7 @@ GtkWidget *create_table_mono_2(appl_t * appl)
 	g_free(text);
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 1, 2, 3, 4);
 
-	if (val->cournot_point) {
+	if (val->cournot_points != 0) {
 		val->price = val->e * val->quantity + val->f;
 
 		text = g_strdup_printf(_("Price: %g"), val->price);
@@ -823,7 +823,7 @@ GtkWidget *create_table_mono_2(appl_t * appl)
 	g_free(text);
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 2, 3, 3, 4);
 
-	if (val->cournot_point) {
+	if (val->cournot_points != 0) {
 		amount =
 		    val->quantity * (val->quantity * (val->e - val->a) +
 				     val->f - val->b) - val->c;
@@ -841,9 +841,9 @@ GtkWidget *create_table_mono_2(appl_t * appl)
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 5, 6);
 
 	discr = SQR(val->f - val->b) + 4. * (val->e - val->a) * val->c;
-	if (discr < 0.0)
+	if (discr < 0.)
 		text = g_strdup_printf(_("Break-even-point: -"));
-	else if (discr == 0.0) {
+	else if (discr == 0.) {
 		gfloat prof_beg;
 
 		prof_beg = (-val->f + val->b) / (2. * (val->e - val->a));
@@ -860,7 +860,7 @@ GtkWidget *create_table_mono_2(appl_t * appl)
 	g_free(text);
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 1, 2, 5, 6);
 
-	if (discr > 0.0) {
+	if (discr > 0.) {
 		gfloat prof_end;
 
 		prof_end =
@@ -955,17 +955,17 @@ GtkWidget *create_table_mono_3(appl_t * appl)
 	/* discriminant: term under the square root sign in the quadratic formula */
 	discr =
 	    4. * (pow((val->e - val->b), 2.) + 3. * val->a * (val->f - val->c));
-	if (discr < 0.0)
+	if (discr < 0.)
 		text = g_strdup_printf(_("Quantity: -"));
-	else if (discr == 0.0) {
+	else if (discr == 0.) {
 		/* initialize quantity */
 		val->quantity = (val->e - val->b) / (3. * val->a);
 
-		if (val->quantity > 0.0) {
+		if (val->quantity > 0.) {
 			text =
 			    g_strdup_printf(_("Quantity: %g"), val->quantity);
 
-			val->cournot_point = TRUE;
+			val->cournot_points = 1;
 		} else
 			text = g_strdup_printf(_("Quantity: -"));
 	} else {
@@ -979,11 +979,11 @@ GtkWidget *create_table_mono_3(appl_t * appl)
 
 		val->quantity = MAX(val->quantity, quantity_2);
 
-		if (val->quantity > 0.0) {
+		if (val->quantity > 0.) {
 			text =
 			    g_strdup_printf(_("Quantity: %g"), val->quantity);
 
-			val->cournot_point = TRUE;
+			val->cournot_points = 1;
 		} else
 			text = g_strdup_printf(_("Quantity: -"));
 	}
@@ -992,7 +992,7 @@ GtkWidget *create_table_mono_3(appl_t * appl)
 	g_free(text);
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 1, 2, 3, 4);
 
-	if (val->cournot_point) {
+	if (val->cournot_points != 0) {
 		val->price = val->e * val->quantity + val->f;
 
 		text = g_strdup_printf(_("Price: %g"), val->price);
@@ -1003,7 +1003,7 @@ GtkWidget *create_table_mono_3(appl_t * appl)
 	g_free(text);
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 2, 3, 3, 4);
 
-	if (val->cournot_point) {
+	if (val->cournot_points != 0) {
 		amount =
 		    -val->quantity * (val->quantity *
 				      (val->a * val->quantity + val->b -
@@ -1028,7 +1028,7 @@ GtkWidget *create_table_mono_3(appl_t * appl)
 	    val->d / val->a;
 	discr = 4. * THR(p) + 27. * SQR(q);
 
-	if (discr < 0.0) {
+	if (discr < 0.) {
 		gfloat u1;
 
 		u1 = -sqrt(-4. / 3. * p) * cos(1. / 3. *
@@ -1044,7 +1044,7 @@ GtkWidget *create_table_mono_3(appl_t * appl)
 	g_free(text);
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 1, 2, 5, 6);
 
-	if (discr < 0.0) {
+	if (discr < 0.) {
 		gfloat u2;
 
 		u2 = sqrt(-4. / 3. * p) * cos(1. / 3. *

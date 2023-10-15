@@ -40,8 +40,7 @@ typedef struct {
 	    *x_price_sales, *y_price_sales,
 	    *x_revenue, *x_revenue_, *y_revenue, *y_revenue_;
 	guint points_cost, points_cost_, points_costu, points_costuv,
-	    points_revenue, type;
-	gboolean cournot_point;
+	    points_revenue, cournot_points, type;
 } values_t;
 
 /* appl_t: summarizes all previous structs */

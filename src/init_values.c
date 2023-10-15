@@ -102,7 +102,7 @@ static void init_price(appl_t * appl)
 	val->e = 550.;
 	val->f = 35.;
 
-	val->cournot_point = FALSE;
+	val->cournot_points = 0;
 }
 
 static void init_price_sales(appl_t * appl)
@@ -112,5 +112,5 @@ static void init_price_sales(appl_t * appl)
 	val->e = -50.;
 	val->f = 1000.;
 
-	val->cournot_point = FALSE;
+	val->cournot_points = 0;
 }

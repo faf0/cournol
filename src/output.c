@@ -18,8 +18,9 @@
 
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
-#include <gtkdatabox.h>
+#include <nxpgtkdatabox.h>
 #include <gtkdatabox_lines.h>
+#include <gtkdatabox_grid.h>
 #include <gtkdatabox_marker.h>
 
 #include "output.h"
@@ -61,6 +62,7 @@ static void print_dialog(appl_t * appl);
 static void draw_page(GtkPrintOperation * operation, GtkPrintContext * context,
 		      int page_nr, appl_t * appl);
 static GtkWidget *create_print_win(appl_t * appl);
+static gboolean delete_event_cb(void);
 
 static GtkWidget *create_main_vbox(appl_t * appl, gboolean scrollbar)
 {
@@ -89,7 +91,6 @@ static GtkWidget *create_main_vbox(appl_t * appl, gboolean scrollbar)
 	case 5:
 		table = create_table_mono_2(appl);
 		break;
-	case 6:
 	default:
 		table = create_table_mono_3(appl);
 		break;
@@ -166,11 +167,7 @@ static GtkWidget *create_main_vbox(appl_t * appl, gboolean scrollbar)
 				     _("C\'(x)"), FALSE);
 	gtk_databox_graph_add(GTK_DATABOX(appl->darea_2), graph);
 
-	switch (val->type) {
-	case 1:
-	case 2:
-	case 3:
-
+	if (val->type <= 3) {
 		/* c(x) */
 		color.red = 0;
 		color.green = 0;
@@ -210,12 +207,7 @@ static GtkWidget *create_main_vbox(appl_t * appl, gboolean scrollbar)
 					     GTK_DATABOX_TEXT_NE, _("cv(x)"),
 					     FALSE);
 		gtk_databox_graph_add(GTK_DATABOX(appl->darea_2), graph);
-		break;
-
-	case 4:
-	case 5:
-	case 6:
-	default:
+	} else {
 		/* p(x) */
 		color.red = 59367;
 		color.green = 4626;
@@ -237,7 +229,6 @@ static GtkWidget *create_main_vbox(appl_t * appl, gboolean scrollbar)
 					     FALSE);
 		gtk_databox_graph_add(GTK_DATABOX(appl->darea_1), graph);
 		gtk_databox_graph_add(GTK_DATABOX(appl->darea_2), graph);
-		break;
 	}
 
 	/* R(x) */
@@ -254,25 +245,15 @@ static GtkWidget *create_main_vbox(appl_t * appl, gboolean scrollbar)
 	    gtk_databox_marker_new(val->points_revenue, val->x_revenue,
 				   val->y_revenue, &color, MARKER_SIZE,
 				   GTK_DATABOX_MARKER_NONE);
-	switch (val->type) {
-	case 1:
-	case 2:
-	case 3:
+	if (val->type <= 3)
 		gtk_databox_marker_set_label(GTK_DATABOX_MARKER(graph), 1,
 					     GTK_DATABOX_TEXT_SW, _("R(x)"),
 					     FALSE);
-		break;
-
-	case 4:
-	case 5:
-	case 6:
-	default:
+	else
 		gtk_databox_marker_set_label(GTK_DATABOX_MARKER(graph),
 					     (POINTS - 1) / 2,
 					     GTK_DATABOX_TEXT_N, _("R(x)"),
 					     FALSE);
-		break;
-	}
 	gtk_databox_graph_add(GTK_DATABOX(appl->darea_1), graph);
 
 	/* R'(x) or market price, respectively */
@@ -284,28 +265,18 @@ static GtkWidget *create_main_vbox(appl_t * appl, gboolean scrollbar)
 	graph =
 	    gtk_databox_marker_new(2, val->x_revenue_, val->y_revenue_, &color,
 				   MARKER_SIZE, GTK_DATABOX_MARKER_NONE);
-	switch (val->type) {
-	case 1:
-	case 2:
-	case 3:
+	if (val->type <= 3)
 		gtk_databox_marker_set_label(GTK_DATABOX_MARKER(graph), 1,
 					     GTK_DATABOX_TEXT_SW, _("R\'(x)"),
 					     FALSE);
-		break;
-
-	case 4:
-	case 5:
-	case 6:
-	default:
+	else
 		gtk_databox_marker_set_label(GTK_DATABOX_MARKER(graph), 1,
 					     GTK_DATABOX_TEXT_NE, _("R\'(x)"),
 					     FALSE);
-		break;
-	}
 	gtk_databox_graph_add(GTK_DATABOX(appl->darea_2), graph);
 
 	/* Cournot point */
-	if (val->cournot_point) {
+	if (val->cournot_points != 0) {
 		color.red = 0;
 		color.green = 0;
 		color.blue = 0;
@@ -322,8 +293,8 @@ static GtkWidget *create_main_vbox(appl_t * appl, gboolean scrollbar)
 	}
 
 	/* automatically rescale the drawing areas */
-	gtk_databox_auto_rescale(GTK_DATABOX(appl->darea_1), 0.0);
-	gtk_databox_auto_rescale(GTK_DATABOX(appl->darea_2), 0.0);
+	gtk_databox_auto_rescale(GTK_DATABOX(appl->darea_1), 0.);
+	gtk_databox_auto_rescale(GTK_DATABOX(appl->darea_2), 0.);
 
 	return vbox;
 }
@@ -331,6 +302,7 @@ static GtkWidget *create_main_vbox(appl_t * appl, gboolean scrollbar)
 void output(appl_t * appl)
 {
 	GtkWidget *window, *vbox, *hbox, **entries, *button;
+	gboolean scrollbar = TRUE;
 
 	/* create window */
 	window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
@@ -340,7 +312,7 @@ void output(appl_t * appl)
 	g_signal_connect(G_OBJECT(window), "delete_event",
 			 G_CALLBACK(gtk_main_quit), NULL);
 
-	vbox = create_main_vbox(appl, TRUE);
+	vbox = create_main_vbox(appl, scrollbar);
 	gtk_container_add(GTK_CONTAINER(window), vbox);
 
 	/* create lowest hbox and add it to vbox */
@@ -429,17 +401,20 @@ static GtkWidget *show_entry(GtkWidget * hbox, const gchar * text)
 static gint show_motion_notify_cb(GtkWidget * darea, GdkEventMotion * event,
 				  GtkWidget ** entries)
 {
-	gfloat x, y;
-	gchar *text;
+	GtkDataboxCoord coord;
+	GtkDataboxValue value;
 	GtkDatabox *box = GTK_DATABOX(darea);
+	gchar *text;
 
-	x = gtk_databox_pixel_to_value_x(box, event->x);
-	y = gtk_databox_pixel_to_value_y(box, event->y);
+	coord.x = event->x;
+	coord.y = event->y;
 
-	text = g_strdup_printf("%g", x);
+	value = gtk_databox_value_from_coord(box, coord);
+
+	text = g_strdup_printf("%g", value.x);
 	gtk_entry_set_text(GTK_ENTRY(entries[SHOW_ACTUAL_X]), text);
 	g_free(text);
-	text = g_strdup_printf("%g", y);
+	text = g_strdup_printf("%g", value.y);
 	gtk_entry_set_text(GTK_ENTRY(entries[SHOW_ACTUAL_Y]), text);
 	g_free(text);
 
@@ -486,8 +461,6 @@ static void back_cb(appl_t * appl)
 	case 5:
 		input_2(appl);
 		break;
-	case 3:
-	case 6:
 	default:
 		input_3(appl);
 		break;
@@ -496,13 +469,17 @@ static void back_cb(appl_t * appl)
 
 static void print_dialog(appl_t * appl)
 {
-	GtkPrintOperation *op = gtk_print_operation_new();
+	GtkPrintOperation *op;
+	GtkPrintOperationResult res;
+
+	op = gtk_print_operation_new();
 
 	gtk_print_operation_set_n_pages(op, 1);
 	gtk_print_operation_set_unit(op, GTK_UNIT_MM);
 	g_signal_connect(op, "draw_page", G_CALLBACK(draw_page), appl);
-	gtk_print_operation_run(op, GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG,
-				NULL, NULL);
+	res =
+	    gtk_print_operation_run(op, GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG,
+				    NULL, NULL);
 }
 
 static void draw_page(GtkPrintOperation * operation,
@@ -525,6 +502,8 @@ static void draw_page(GtkPrintOperation * operation,
 	while (gtk_events_pending())
 		gtk_main_iteration();
 
+	g_usleep(400000);
+
 	gdk_flush();
 
 	/* make a screenshot */
@@ -539,24 +518,25 @@ static void draw_page(GtkPrintOperation * operation,
 	    (gdouble) gtk_print_context_get_width(print_context) /
 	    window->allocation.width;
 
-	/* destoy print_win */
-	if (window)
-		gtk_widget_destroy(window);
-	else
-		g_print("The print window was closed unexpectedly.");
-
 	/* scale, keep aspect ratio */
 	cairo_scale(cr, scale, scale);
 
-	gdk_cairo_set_source_pixbuf(cr, pixbuf, 0.0, 0.0);
+	gdk_cairo_set_source_pixbuf(cr, pixbuf, 0., 0.);
 
 	cairo_paint(cr);
+
+	/* destoy print_win */
+	if (window != NULL)
+		gtk_widget_destroy(window);
+	else
+		g_print("The print window was closed unexpectedly.");
 }
 
 /* create the window to be printed */
 static GtkWidget *create_print_win(appl_t * appl)
 {
 	GtkWidget *window, *vbox;
+	gboolean scrollbar = FALSE;
 	GdkColor color;
 
 	/* create window */
@@ -564,10 +544,10 @@ static GtkWidget *create_print_win(appl_t * appl)
 	gtk_window_set_title(GTK_WINDOW(window), _("Print Window - " PACKAGE));
 	gtk_window_maximize(GTK_WINDOW(window));
 	g_signal_connect(G_OBJECT(window), "delete_event",
-			 G_CALLBACK(TRUE), NULL);
+			 G_CALLBACK(delete_event_cb), NULL);
 
 	/* create main vbox for the table and hboxes */
-	vbox = create_main_vbox(appl, FALSE);
+	vbox = create_main_vbox(appl, scrollbar);
 	gtk_container_add(GTK_CONTAINER(window), vbox);
 
 	/* set background color of the print window to white */
@@ -577,5 +557,17 @@ static GtkWidget *create_print_win(appl_t * appl)
 
 	gtk_widget_modify_bg(window, GTK_STATE_NORMAL, &color);
 
+	gtk_widget_realize(window);
+
+	while (gtk_events_pending())
+		gtk_main_iteration();
+
+	g_usleep(400000);
+
 	return window;
+}
+
+static gboolean delete_event_cb(void)
+{
+	return TRUE;
 }

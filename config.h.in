@@ -96,15 +96,6 @@
 /* Define to 1 if you have the `getuid' function. */
 #undef HAVE_GETUID
 
-/* Define to 1 if you have the <gtkdatabox.h> header file. */
-#undef HAVE_GTKDATABOX_H
-
-/* Define to 1 if you have the <gtkdatabox_lines.h> header file. */
-#undef HAVE_GTKDATABOX_LINES_H
-
-/* Define to 1 if you have the <gtkdatabox_marker.h> header file. */
-#undef HAVE_GTKDATABOX_MARKER_H
-
 /* Define if you have the iconv() function. */
 #undef HAVE_ICONV
 
@@ -132,6 +123,9 @@
 
 /* Define to 1 if the system has the type `long long int'. */
 #undef HAVE_LONG_LONG_INT
+
+/* Define to 1 if you have the <math.h> header file. */
+#undef HAVE_MATH_H
 
 /* Define to 1 if you have the <memory.h> header file. */
 #undef HAVE_MEMORY_H

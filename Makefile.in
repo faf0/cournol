@@ -36,9 +36,9 @@ subdir = .
 DIST_COMMON = README $(am__configure_deps) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(srcdir)/config.h.in \
 	$(top_srcdir)/configure $(top_srcdir)/intl/Makefile.in \
-	ABOUT-NLS AUTHORS COPYING ChangeLog INSTALL NEWS config.guess \
-	config.rpath config.sub depcomp install-sh ltmain.sh missing \
-	mkinstalldirs
+	ABOUT-NLS AUTHORS COPYING COPYING.LIB ChangeLog INSTALL NEWS \
+	config.guess config.rpath config.sub depcomp install-sh \
+	ltmain.sh missing mkinstalldirs
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/codeset.m4 \
 	$(top_srcdir)/m4/gettext.m4 $(top_srcdir)/m4/glibc2.m4 \
@@ -239,11 +239,11 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-SUBDIRS = intl po src
+SUBDIRS = intl po lib src
 ACLOCAL_AMFLAGS = -I m4
 man_MANS = cournol.1
 EXTRA_DIST = m4/ChangeLog  autogen.sh cournol.desktop cournol.1 cournol.ico cournol.png \
-	     config.h.w32 scripts/Lindent scripts/cournol.iss
+	     config.h.w32 patches/gtkdatabox.diff scripts/Lindent scripts/cournol.iss
 
 icon_DATA = cournol.png
 icondir = $(datadir)/pixmaps

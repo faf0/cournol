@@ -31,20 +31,10 @@ void init_points_1(appl_t * appl)
 {
 	values_t *val = &(appl->values);
 
-	switch (val->type) {
-	case 1:
-	case 2:
-	case 3:
+	if (val->type <= 3)
 		init_points_poly(appl);
-		break;
-
-	case 4:
-	case 5:
-	case 6:
-	default:
+	else
 		init_points_mono(appl);
-		break;
-	}
 
 	/* C(x) */
 	val->points_cost = 2;
@@ -97,19 +87,10 @@ void init_points_2(appl_t * appl)
 	values_t *val = &(appl->values);
 	guint i;
 
-	switch (val->type) {
-	case 1:
-	case 2:
-	case 3:
+	if (val->type <= 3)
 		init_points_poly(appl);
-		break;
-
-	case 4:
-	case 5:
-	case 6:
+	else
 		init_points_mono(appl);
-		break;
-	}
 
 	/* C(x) */
 	val->points_cost = POINTS;
@@ -155,8 +136,8 @@ void init_points_2(appl_t * appl)
 		val->points_costuv = 2;
 
 		val->x_costuv = val->x_cost_;
-
 		val->y_costuv = g_new(gfloat, 2);
+
 		val->y_costuv[0] = val->b;
 		val->y_costuv[1] = val->a * val->length + val->b;
 	}
@@ -169,20 +150,10 @@ void init_points_3(appl_t * appl)
 	values_t *val = &(appl->values);
 	guint i;
 
-	switch (val->type) {
-	case 1:
-	case 2:
-	case 3:
+	if (val->type <= 3)
 		init_points_poly(appl);
-		break;
-
-	case 4:
-	case 5:
-	case 6:
-	default:
+	else
 		init_points_mono(appl);
-		break;
-	}
 
 	/* C(x) */
 	val->points_cost = POINTS;
@@ -230,7 +201,6 @@ void init_points_3(appl_t * appl)
 		val->points_costuv = POINTS;
 
 		val->x_costuv = val->x_cost;
-
 		val->y_costuv = g_new(gfloat, POINTS);
 
 		for (i = 0; i < POINTS; i++)
