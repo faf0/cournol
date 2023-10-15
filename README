@@ -1,6 +1,6 @@
 Cournol is a GTK+ based application for analyzing absolute supply
 monopolies and polypolies. The program calculates the most important
-information of such market types (e. g. maximum profit) and draws the
+data points for these market types, such as maximum profit, and draws the
 respective graphs.
 
 The library "nxpgtkdatabox" is an implementation of NxpRuler (by Gustavo
@@ -28,6 +28,6 @@ tool indent for formatting the source code.
 
 An Inno Setup script is located in scripts/cournol.iss
 
-Get the newest version of cournol from: http://cournol.k-2007.de/
+Get the newest version of cournol from https://cournol.ffoerg.de/ .
 
 Read INSTALL for detailed installation instructions.
