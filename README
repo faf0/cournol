@@ -1,6 +1,6 @@
 Cournol is a GTK+ based application for analyzing absolute supply
 monopolies and polypolies. The program calculates the most important
-information of such market types (e. g. maximum profit) and draws the
+data points for these market types, such as maximum profit, and draws the
 respective graphs.
 
 Cournol depends on GTK+ >= 2.10.0, so you have to install the
@@ -21,7 +21,7 @@ tool indent for formatting the source code.
 
 An Inno Setup script is located in scripts/cournol.iss
 
-Get the newest version of cournol from: http://cournol.k-2007.de/
+Find further information about cournol at https://cournol.ffoerg.de/ .
 
 Read INSTALL for detailed installation instructions.
 
